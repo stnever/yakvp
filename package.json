@@ -1,0 +1,26 @@
+{
+  "name": "yakvp",
+  "version": "1.0.0",
+  "description": "Yet Another Key-Value Parser",
+  "main": "yakvp.js",
+  "scripts": {
+    "test": "mocha --recursive test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stnever/yakvp.git"
+  },
+  "keywords": [
+    "key-value"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stnever/yakvp/issues"
+  },
+  "homepage": "https://github.com/stnever/yakvp#readme",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "moment": "^2.12.0"
+  }
+}
