@@ -23,6 +23,16 @@ describe('YAKVP Spec', function() {
     assert.equal(parsed.ids[0], 1)
   })
 
+  it('should parse empty array of ints', function() {
+    var parsed = yakvp.build({
+      ids: '[int]'
+    }).parse({
+      ids: ''
+    })
+    assert(_.isArray(parsed.ids))
+    assert.equal(parsed.ids.length, 0)
+  })
+
   it('should parse dates', function() {
     var parsed = yakvp.build({
       '*Date': 'date'
