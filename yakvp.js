@@ -79,9 +79,14 @@ function doParse(rules, params) {
     if ( rule != null ) {
 
       if ( rule.format.indexOf('[') != -1 && !_.isArray(value)) {
-        if ( value == '' ) value = []
-        else value = value.split(',')
-      }        
+        if ( value == null ) {
+          value = []
+        } else if ( _.isString(value) ) {
+          value = _.compact(value.split(','))
+        } else {
+          value = [value]
+        }
+      }
 
       value = _.isArray(value)
         ? value.map(function(v) { return parseOne(v, rule.format) })
