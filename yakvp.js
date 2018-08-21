@@ -97,21 +97,33 @@ function doParse(rules, params) {
         : parseOne(value, rule.format)
     }
 
-    if ( value != null && !_.isNaN(value))
-      result[key] = value
+    // if ( value != null && !_.isNaN(value))
+    result[key] = value
   })
 
   return result
 }
 
 function parseOne(str, format) {
-  if ( format.indexOf('int') != -1 )
-    return parseInt(str);
-  if ( format.indexOf('float') != -1 )
-    return parseFloat(str);
-  if ( format.indexOf('date') != -1 )
-    return moment(str).toDate();
-  if ( format.indexOf('bool') != -1 )
-    return str == 'true';
-  return str;
+  if ( format.indexOf('int') != -1 ) {
+    if ( _.isString(str) ) return parseInt(str)
+    return str
+  }
+
+  if ( format.indexOf('float') != -1 ) {
+    if ( _.isString(str) ) return parseFloat(str)
+    return str
+  }
+
+  if ( format.indexOf('date') != -1 ) {
+    if ( _.isString(str) ) return moment(str).toDate()
+    return str
+  }
+
+  if ( format.indexOf('bool') != -1 ) {
+    if ( _.isString(str) ) return str == 'true'
+    return str
+  }
+
+  return str
 }

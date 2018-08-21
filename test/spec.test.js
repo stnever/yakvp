@@ -69,3 +69,8 @@ test('should parse based on values', () => {
   expect(parsed.isX).toBe(true)
   expect(parsed.isY).toEqual('blargh')
 })
+
+test('should not modify other params', () => {
+  let parsed = yakvp.common().parse({v: true})
+  expect(parsed.v).toBe(true)
+})
