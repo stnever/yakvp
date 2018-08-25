@@ -11,3 +11,8 @@ test('should parse command line args', () => {
   expect(result.vehicleId).toBe(123)
   expect(result.fromDate).toEqual(new Date(Date.UTC(2015,0,1,13,59,59)))
 })
+
+test('should work with --vehicleIds all', () => {
+  let result = parse({vehicleIds: 'all'}, {lenient:true})
+  expect(result.vehicleIds).toEqual('all')
+})
