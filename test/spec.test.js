@@ -74,3 +74,33 @@ test('should not modify other params', () => {
   let parsed = yakvp.common().parse({v: true})
   expect(parsed.v).toBe(true)
 })
+
+test('should not modify already parsed values', () => {
+  let parsed = yakvp.common().parse({
+    aIds: 1,
+    bIds: '1',
+    cIds: [1],
+    dIds: [1,2],
+    eIds: '1,2'
+  })
+
+  expect(parsed.aIds).toEqual([1])
+  expect(parsed.bIds).toEqual([1])
+  expect(parsed.cIds).toEqual([1])
+  expect(parsed.dIds).toEqual([1,2])
+  expect(parsed.eIds).toEqual([1,2])
+})
+
+test('should not modify already parsed values - strings', () => {
+  let parsed = yakvp.common().parse({
+    aTags: 'a',
+    bTags: ['a'],
+    cTags: 'a,b',
+    dTags: ['a','b']
+  })
+
+  expect(parsed.aTags).toEqual(['a'])
+  expect(parsed.bTags).toEqual(['a'])
+  expect(parsed.cTags).toEqual(['a', 'b'])
+  expect(parsed.dTags).toEqual(['a', 'b'])
+})
