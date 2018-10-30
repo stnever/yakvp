@@ -3,16 +3,16 @@ const _ = require('lodash'),
 
 exports.common = function() {
   return exports.build({
-    'id'    : 'int',
-    'ids'   : '[int]',
-    'tags'  : '[string]',
-    '*Tags' : '[string]',
-    '*Date' : 'date',
-    '*Ids'  : '[int]',
-    '*Id'   : 'int',
-    'limit,offset': 'int',
-    '=true,=false': 'bool',
-    '=/^[-\\d\\.]*$/': 'float'
+    'id'              : 'int',
+    'ids'             : '[int]',
+    'tags'            : '[string]',
+    '*Tags'           : '[string]',
+    '*Date'           : 'date',
+    '*Ids'            : '[int]',
+    '*Id'             : 'int',
+    'limit,offset'    : 'int',
+    '=true,=false'    : 'bool',
+    '=/^[-\\d\\.]+$/' : 'float'
   })
 }
 
