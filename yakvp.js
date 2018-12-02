@@ -1,19 +1,26 @@
 const _ = require('lodash'),
       moment = require('moment')
 
+const _commonSpec = {
+  'id'              : 'int',
+  'ids'             : '[int]',
+  'tags'            : '[string]',
+  '*Tags'           : '[string]',
+  '*Date'           : 'date',
+  '*Ids'            : '[int]',
+  '*Id'             : 'int',
+  'limit,offset'    : 'int',
+  '=true,=false'    : 'bool',
+  '=/^[-\\d\\.]+$/' : 'float'
+}
+
+exports.create = function(spec, {skipCommon=false}={}) {
+  if ( !skipCommon ) spec = _.defaults(spec, _commonSpec)
+  return exports.build(spec)
+}
+
 exports.common = function() {
-  return exports.build({
-    'id'              : 'int',
-    'ids'             : '[int]',
-    'tags'            : '[string]',
-    '*Tags'           : '[string]',
-    '*Date'           : 'date',
-    '*Ids'            : '[int]',
-    '*Id'             : 'int',
-    'limit,offset'    : 'int',
-    '=true,=false'    : 'bool',
-    '=/^[-\\d\\.]+$/' : 'float'
-  })
+  return exports.build(_commonSpec)
 }
 
 exports.build = function(rules) {
