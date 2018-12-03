@@ -14,7 +14,7 @@ const _commonSpec = {
   '=/^[-\\d\\.]+$/' : 'float'
 }
 
-exports.create = function(spec, {skipCommon=false}={}) {
+exports.create = function(spec={}, {skipCommon=false}={}) {
   if ( !skipCommon ) spec = _.defaults(spec, _commonSpec)
   return exports.build(spec)
 }
