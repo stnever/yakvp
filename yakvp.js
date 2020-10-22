@@ -11,7 +11,7 @@ const _commonSpec = {
   '*Id'             : 'int',
   'limit,offset'    : 'int',
   '=true,=false'    : 'bool',
-  '=/^[-\\d\\.]+$/' : 'float'
+  '=/^[-+]?[\\d\\.]+$/' : 'float'
 }
 
 exports.create = function(spec={}, {skipCommon=false}={}) {
